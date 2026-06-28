@@ -91,33 +91,36 @@ function Picture({
           letterSpacing: "-0.02em",
           whiteSpace: "nowrap",
         }}
-        className="pointer-events-none absolute z-[1] select-none font-display uppercase leading-none text-white/90"
+        className="pointer-events-none absolute z-[1] select-none font-display uppercase leading-none text-white/[0.14]"
       >
         {pic.word}
       </motion.span>
 
       {/* food art (3D model for the ice-cream/waffle picture) */}
-      <motion.div style={{ y: artY }} className="relative z-[3]">
+      <motion.div
+        style={{ y: artY }}
+        className="relative z-[3] mb-[12vh] sm:mb-[8vh]"
+      >
         {pic.slug === "waffle" ? (
-          <Churro3D className="h-[60vh] w-[60vh] max-w-[92vw]" />
+          <Churro3D className="h-[46vh] w-[46vh] max-w-[88vw]" />
         ) : (
           <FoodArt
             category={pic.slug}
-            className="h-[44vh] w-auto drop-shadow-[0_18px_28px_rgba(42,23,38,0.35)] sm:h-[56vh]"
+            className="h-[40vh] w-auto drop-shadow-[0_18px_28px_rgba(42,23,38,0.35)] sm:h-[50vh]"
           />
         )}
       </motion.div>
 
       {/* caption */}
-      <div className="absolute bottom-10 left-4 z-[4] max-w-[420px] sm:bottom-16 sm:left-16">
-        <p className="mb-1 font-display text-xl text-white/70">{pic.num}</p>
+      <div className="absolute bottom-8 left-4 z-[4] max-w-[420px] drop-shadow-[0_2px_12px_rgba(42,23,38,0.55)] sm:bottom-14 sm:left-16">
+        <p className="mb-1 font-display text-xl text-white/80">{pic.num}</p>
         <h3
           className="font-display uppercase leading-[0.9] text-white"
-          style={{ fontSize: "clamp(30px, 5vw, 64px)" }}
+          style={{ fontSize: "clamp(28px, 4.6vw, 60px)" }}
         >
           {pic.title}
         </h3>
-        <p className="mt-3 hidden font-body text-sm font-medium leading-relaxed text-white/90 sm:block">
+        <p className="mt-3 hidden font-body text-sm font-medium leading-relaxed text-white/95 sm:block">
           {pic.text}
         </p>
       </div>
@@ -135,9 +138,9 @@ export default function ScrollPictures() {
   return (
     <section ref={ref} className="relative h-[320vh] bg-black">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* constant label */}
-        <div className="absolute left-4 top-6 z-[40] sm:left-16 sm:top-8">
-          <p className="font-body text-xs font-semibold uppercase tracking-[0.25em] text-white/85">
+        {/* constant label — centred so it never collides with the fixed navbar */}
+        <div className="absolute left-1/2 top-[4.5rem] z-[40] -translate-x-1/2">
+          <p className="font-body text-[11px] font-semibold uppercase tracking-[0.3em] text-white/85">
             What we offer
           </p>
         </div>

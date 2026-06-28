@@ -24,7 +24,7 @@ export default function MenuPage() {
 
       {/* giant ghost word */}
       <span
-        className="pointer-events-none absolute left-1/2 top-[12%] z-0 -translate-x-1/2 select-none font-display uppercase leading-none text-white/90"
+        className="pointer-events-none absolute left-1/2 top-[14%] z-0 -translate-x-1/2 select-none font-display uppercase leading-none text-white/[0.13]"
         style={{ fontSize: "clamp(90px, 24vw, 340px)", letterSpacing: "-0.02em" }}
       >
         {info.word}

@@ -47,7 +47,7 @@ export default function ChurroCanvas() {
         enableZoom={false}
         enablePan={false}
         autoRotate
-        autoRotateSpeed={1.5}
+        autoRotateSpeed={2.6}
       />
     </Canvas>
   );

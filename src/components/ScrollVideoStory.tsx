@@ -15,8 +15,8 @@ import { ChevronDown } from "./icons";
  *   TRACK height  -> how much scrolling plays the whole clip (smaller = faster)
  *   LERP          -> how tightly the playhead follows scroll (higher = snappier)
  */
-const TRACK = "h-[150vh]";
-const LERP = 0.28;
+const TRACK = "h-[125vh]";
+const LERP = 0.5;
 
 export default function ScrollVideoStory() {
   const trackRef = useRef<HTMLDivElement>(null);
