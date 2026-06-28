@@ -24,11 +24,18 @@ function Model({ url }: { url: string }) {
   return <primitive object={obj} />;
 }
 
-export default function ModelCanvas({ url }: { url: string }) {
+export default function ModelCanvas({
+  url,
+  elevation = 1.2,
+}: {
+  url: string;
+  /** camera height — higher = more of a tilted, looking-down view */
+  elevation?: number;
+}) {
   return (
     <Canvas
       dpr={[1, 1.8]}
-      camera={{ position: [0, 0, 5], fov: 35 }}
+      camera={{ position: [0, elevation, 4.7], fov: 35 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       style={{ width: "100%", height: "100%" }}
     >

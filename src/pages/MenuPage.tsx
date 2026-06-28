@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CATEGORIES, CATEGORY_ORDER, type Category } from "../data/menu";
-import FoodArt from "../components/FoodArt";
+import FoodModel from "../components/FoodModel";
 import Grain from "../components/Grain";
 import { ArrowLeft, ArrowRight, Phone } from "../components/icons";
 
@@ -49,7 +49,10 @@ export default function MenuPage() {
 
       {/* hero */}
       <section className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 pt-6 text-center">
-        <FoodArt category={info.slug} className="h-40 w-auto animate-float sm:h-52" />
+        <FoodModel
+          slug={info.slug}
+          className="h-[40vh] w-[40vh] max-w-[86vw]"
+        />
         <p className="mt-4 font-body text-xs font-bold uppercase tracking-[0.3em] text-white/85">
           {info.kicker}
         </p>

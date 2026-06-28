@@ -11,6 +11,13 @@ const URLS: Record<Category, string> = {
   fastfood: "/models/fastfood.glb",
 };
 
+// camera height per model — the plate-shaped Chinese dish reads best tilted down
+const ELEVATION: Record<Category, number> = {
+  waffle: 1.0,
+  chinese: 2.7,
+  fastfood: 1.7,
+};
+
 /**
  * Performance-safe 3D model.
  * - Renders the lightweight SVG until the section is near the viewport.
@@ -46,7 +53,7 @@ export default function FoodModel({
     <div ref={ref} className={className}>
       {show ? (
         <Suspense fallback={<FoodArt category={slug} className="h-full w-auto" />}>
-          <ModelCanvas url={URLS[slug]} />
+          <ModelCanvas url={URLS[slug]} elevation={ELEVATION[slug]} />
         </Suspense>
       ) : (
         <FoodArt category={slug} className="h-full w-auto" />
