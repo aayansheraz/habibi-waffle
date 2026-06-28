@@ -1,15 +1,11 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import HabibiLogo from "./HabibiLogo";
 import { ChevronDown } from "./icons";
 
 /**
- * Vertical scroll hero. The logo reveals with a blur-in + shine sweep, then
- * transforms (scales / lifts / fades) as you scroll down.
- *
- * To use the real logo: drop a transparent PNG at public/images/logo.png and
- * replace <HabibiLogo /> below with
- *   <img src="/images/logo.png" className="h-[64vh] max-h-[620px] w-auto" />
+ * Vertical scroll hero. The real circular Habibi Waffle logo reveals with a
+ * blur-in + shine sweep, then transforms (scales / lifts / fades) as you
+ * scroll down.
  */
 export default function ScrollLogoHero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -48,7 +44,12 @@ export default function ScrollLogoHero() {
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="sheen relative overflow-hidden rounded-full drop-shadow-[0_24px_70px_rgba(230,57,139,0.45)]">
-              <HabibiLogo className="h-[62vh] max-h-[600px] w-auto" />
+              <img
+                src="/images/logo-waffle.png"
+                alt="Habibi Waffle"
+                className="h-[62vh] max-h-[600px] w-auto select-none"
+                draggable={false}
+              />
             </div>
           </motion.div>
         </motion.div>

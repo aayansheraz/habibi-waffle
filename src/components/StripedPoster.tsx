@@ -1,33 +1,42 @@
 import { useNavigate } from "react-router-dom";
 import { CATEGORY_ORDER, CATEGORIES, type Category } from "../data/menu";
-import FoodArt from "./FoodArt";
 import Grain from "./Grain";
 import { ArrowRight } from "./icons";
 
-/** Poster colours echo the printed Habibi stripe banner. */
+/** Poster colours + real brand logos per category. */
 const STRIPE: Record<
   Category,
-  { bg: string; ring: string; title: string; accent: string; lines: string[] }
+  {
+    bg: string;
+    title: string;
+    accent: string;
+    logo: string;
+    logoClass: string;
+    lines: string[];
+  }
 > = {
   chinese: {
     bg: "linear-gradient(180deg,#5A1018 0%,#3A0A10 100%)",
-    ring: "#7A1F2B",
     title: "text-[#F3E6C4]",
     accent: "text-[#F3E6C4]/80",
-    lines: ["Habibi", "Chinese", "Menu"],
+    logo: "/images/logo-habibi-light.png",
+    logoClass: "h-20 w-auto sm:h-24",
+    lines: ["Chinese", "Menu"],
   },
   waffle: {
     bg: "linear-gradient(180deg,#4A2270 0%,#2A0F43 100%)",
-    ring: "#6B2EA0",
     title: "text-toon-pink",
     accent: "text-white/80",
-    lines: ["Habibi", "Waffle &", "Dessert"],
+    logo: "/images/logo-waffle.png",
+    logoClass: "h-28 w-28 sm:h-32 sm:w-32",
+    lines: ["Waffle &", "Dessert"],
   },
   fastfood: {
     bg: "linear-gradient(180deg,#2B2C31 0%,#141417 100%)",
-    ring: "#3A3B40",
     title: "text-toon-amber",
     accent: "text-white/80",
+    logo: "/images/logo-h.png",
+    logoClass: "h-24 w-24 sm:h-28 sm:w-28",
     lines: ["Broast", "Pizza", "Wrap"],
   },
 };
@@ -46,15 +55,14 @@ function Stripe({ slug }: { slug: Category }) {
     >
       <Grain className="z-[1]" opacity={0.3} />
 
-      {/* emblem */}
-      <div className="relative z-10 flex flex-col items-center gap-3">
-        <div
-          className="grid h-24 w-24 place-items-center rounded-full cartoon-border-white transition-transform duration-500 group-hover:scale-110"
-          style={{ backgroundColor: s.ring }}
-        >
-          <FoodArt category={slug} className="h-16 w-auto" />
-        </div>
-        <span className="font-brand text-2xl text-white">Habibi</span>
+      {/* brand logo */}
+      <div className="relative z-10 flex min-h-[8rem] items-center">
+        <img
+          src={s.logo}
+          alt={`Habibi ${info.title}`}
+          draggable={false}
+          className={`${s.logoClass} object-contain transition-transform duration-500 group-hover:scale-110`}
+        />
       </div>
 
       {/* big title */}

@@ -10,7 +10,12 @@ export default function Footer() {
     >
       <Grain opacity={0.25} />
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
-        <p className="font-brand text-5xl text-toon-pink">Habibi</p>
+        <img
+          src="/images/logo-habibi-light.png"
+          alt="Häbibi"
+          className="h-16 w-auto sm:h-20"
+          draggable={false}
+        />
 
         <h2
           className="font-display uppercase leading-[0.9] text-white"

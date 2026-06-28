@@ -24,6 +24,14 @@ function Model({ url }: { url: string }) {
   return <primitive object={obj} />;
 }
 
+/** Pre-fetch + pre-decode the models (used for idle warm-up). Lives here so it
+ *  reuses ModelCanvas's minimal drei imports instead of the full drei barrel. */
+export function preloadModels() {
+  ["/models/churro.glb", "/models/chinese.glb", "/models/fastfood.glb"].forEach(
+    (u) => useGLTF.preload(u, true)
+  );
+}
+
 export default function ModelCanvas({
   url,
   elevation = 1.2,

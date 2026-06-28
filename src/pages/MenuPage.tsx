@@ -6,6 +6,12 @@ import FoodModel from "../components/FoodModel";
 import Grain from "../components/Grain";
 import { ArrowLeft, ArrowRight, Phone } from "../components/icons";
 
+const LOGO: Record<Category, { src: string; cls: string }> = {
+  waffle: { src: "/images/logo-waffle.png", cls: "h-10 w-10" },
+  chinese: { src: "/images/logo-habibi-light.png", cls: "h-7 w-auto" },
+  fastfood: { src: "/images/logo-h.png", cls: "h-10 w-10" },
+};
+
 export default function MenuPage() {
   const { slug } = useParams<{ slug: string }>();
   useEffect(() => window.scrollTo(0, 0), [slug]);
@@ -38,7 +44,12 @@ export default function MenuPage() {
         >
           <ArrowLeft className="h-4 w-4" /> Back
         </Link>
-        <span className="font-brand text-2xl text-white">Habibi</span>
+        <img
+          src={LOGO[info.slug].src}
+          alt={`Habibi ${info.title}`}
+          className={`${LOGO[info.slug].cls} object-contain`}
+          draggable={false}
+        />
         <a
           href="tel:03114444237"
           className="inline-flex items-center gap-2 rounded-full bg-toon-ink px-4 py-2 font-body text-sm font-bold uppercase tracking-wide text-white shadow-toon-sm transition-transform duration-150 hover:scale-105"

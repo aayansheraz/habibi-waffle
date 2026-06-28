@@ -13,13 +13,8 @@ export default function App() {
       return;
     }
     const warm = () => {
-      import("./components/ModelCanvas");
-      import("@react-three/drei")
-        .then((m) => {
-          ["/models/churro.glb", "/models/chinese.glb", "/models/fastfood.glb"].forEach(
-            (u) => m.useGLTF.preload(u, true)
-          );
-        })
+      import("./components/ModelCanvas")
+        .then((m) => m.preloadModels())
         .catch(() => {});
     };
     const ric = window as unknown as {

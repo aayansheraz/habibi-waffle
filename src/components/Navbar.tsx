@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import HabibiLogo from "./HabibiLogo";
 import { ChevronDown, Phone } from "./icons";
 
 const MENUS = [
@@ -31,13 +30,18 @@ export default function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
         {/* brand */}
         <a href="#hero" className="flex items-center gap-2.5">
-          <HabibiLogo className="h-9 w-9" />
-          <span className="flex flex-col leading-none">
-            <span className="font-brand text-xl text-white">Habibi</span>
-            <span className="font-body text-[9px] font-semibold uppercase tracking-[0.25em] text-white/70">
-              Waffle
-            </span>
-          </span>
+          <img
+            src="/images/logo-waffle.png"
+            alt="Habibi Waffle"
+            className="h-10 w-10"
+            draggable={false}
+          />
+          <img
+            src="/images/logo-habibi-light.png"
+            alt="Häbibi"
+            className="h-5 w-auto sm:h-6"
+            draggable={false}
+          />
         </a>
 
         {/* desktop links */}
