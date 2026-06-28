@@ -11,10 +11,13 @@ export type CategoryInfo = {
   slug: Category;
   title: string;
   kicker: string;
+  /** giant ghost word behind the art */
+  word: string;
   blurb: string;
-  /** tailwind gradient + accent classes */
-  accent: string;
-  bg: string;
+  /** flat background colour for this category */
+  color: string;
+  /** lighter panel colour for cards */
+  panel: string;
   products: Product[];
 };
 
@@ -22,11 +25,12 @@ export const CATEGORIES: Record<Category, CategoryInfo> = {
   waffle: {
     slug: "waffle",
     title: "Waffle & Dessert",
-    kicker: "What we are famous for",
+    kicker: "What we're famous for",
+    word: "WAFFLE",
     blurb:
-      "Freshly pressed Belgian & bubble waffles, loaded ice cream sundaes, brownies and shakes. Creamy, fruity, made to order.",
-    accent: "text-habibi-magenta",
-    bg: "from-habibi-plum via-habibi-purple to-habibi-purple-dark",
+      "Freshly pressed Belgian & bubble waffles, loaded ice-cream sundaes, brownies and thick shakes. Creamy, fruity, made to order.",
+    color: "#E36FA9",
+    panel: "#EC8DBE",
     products: [
       { name: "Classic Belgian Waffle", desc: "Crisp waffle, chocolate drizzle, fresh cream.", price: "Rs 450", tag: "Bestseller" },
       { name: "Bubble Waffle Sundae", desc: "Hong-Kong egg waffle wrapped around a scoop.", price: "Rs 650", tag: "Signature" },
@@ -40,10 +44,11 @@ export const CATEGORIES: Record<Category, CategoryInfo> = {
     slug: "chinese",
     title: "Chinese Menu",
     kicker: "Wok-fired & fresh",
+    word: "CHINESE",
     blurb:
       "Sizzling desi-Chinese cooked over high flame — saucy, spicy and generous. From soups to rice and noodles.",
-    accent: "text-habibi-cream",
-    bg: "from-habibi-wine via-[#5a1620] to-habibi-wine-dark",
+    color: "#D8443B",
+    panel: "#E26A62",
     products: [
       { name: "Chicken Manchurian", desc: "Crispy chicken in tangy Manchurian gravy.", price: "Rs 750", tag: "Popular" },
       { name: "Chicken Chowmein", desc: "Stir-fried noodles, veggies, soy garlic.", price: "Rs 650" },
@@ -57,10 +62,11 @@ export const CATEGORIES: Record<Category, CategoryInfo> = {
     slug: "fastfood",
     title: "Broast · Pizza · Wraps",
     kicker: "Special injected",
+    word: "BROAST",
     blurb:
       "Special injected broast, hand-stretched pizzas and loaded wraps. Juicy, crunchy and made for cravings.",
-    accent: "text-habibi-gold",
-    bg: "from-[#23242a] via-habibi-charcoal to-black",
+    color: "#F2A63C",
+    panel: "#F6BC63",
     products: [
       { name: "Special Injected Broast", desc: "Marinade-injected crispy broast, fries, dip.", price: "Rs 600", tag: "Signature" },
       { name: "Habibi Special Pizza", desc: "Loaded cheese, chicken, peppers & sauce.", price: "Rs 1100" },

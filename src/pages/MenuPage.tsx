@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CATEGORIES, CATEGORY_ORDER, type Category } from "../data/menu";
-import BlurText from "../components/BlurText";
-import HabibiLogo from "../components/HabibiLogo";
-import { ArrowLeft, ArrowUpRight, Phone } from "../components/icons";
+import FoodArt from "../components/FoodArt";
+import Grain from "../components/Grain";
+import { ArrowLeft, ArrowRight, Phone } from "../components/icons";
 
 export default function MenuPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -16,71 +16,84 @@ export default function MenuPage() {
   const info = CATEGORIES[slug as Category];
 
   return (
-    <main className={`min-h-screen bg-gradient-to-b ${info.bg} pb-24`}>
-      <div className="waffle-texture pointer-events-none fixed inset-0 opacity-15" />
+    <main
+      className="relative min-h-screen overflow-hidden pb-24"
+      style={{ backgroundColor: info.color }}
+    >
+      <Grain className="z-[1] fixed" opacity={0.35} />
+
+      {/* giant ghost word */}
+      <span
+        className="pointer-events-none absolute left-1/2 top-[12%] z-0 -translate-x-1/2 select-none font-display uppercase leading-none text-white/90"
+        style={{ fontSize: "clamp(90px, 24vw, 340px)", letterSpacing: "-0.02em" }}
+      >
+        {info.word}
+      </span>
 
       {/* top bar */}
-      <header className="relative z-10 flex items-center justify-between px-5 py-5 md:px-10">
+      <header className="relative z-[60] flex items-center justify-between px-4 py-5 sm:px-10">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 rounded-full liquid-glass px-4 py-2 font-body text-sm text-white"
+          className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 font-body text-sm font-bold uppercase tracking-wide text-toon-ink shadow-toon-sm transition-transform duration-150 hover:scale-105"
         >
           <ArrowLeft className="h-4 w-4" /> Back
         </Link>
-        <HabibiLogo className="h-12 w-12" rings={false} />
+        <span className="font-brand text-2xl text-white">Habibi</span>
         <a
           href="tel:03114444237"
-          className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 font-body text-sm font-semibold text-black"
+          className="inline-flex items-center gap-2 rounded-full bg-toon-ink px-4 py-2 font-body text-sm font-bold uppercase tracking-wide text-white shadow-toon-sm transition-transform duration-150 hover:scale-105"
         >
           <Phone className="h-4 w-4" /> Order
         </a>
       </header>
 
       {/* hero */}
-      <section className="relative z-10 mx-auto max-w-5xl px-6 pt-12 text-center">
-        <span className={`font-body text-xs uppercase tracking-[0.35em] ${info.accent}`}>
+      <section className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 pt-6 text-center">
+        <FoodArt category={info.slug} className="h-40 w-auto animate-float sm:h-52" />
+        <p className="mt-4 font-body text-xs font-bold uppercase tracking-[0.3em] text-white/85">
           {info.kicker}
-        </span>
-        <BlurText
-          text={info.title}
-          className={`mt-4 font-heading italic text-6xl leading-[0.9] tracking-[-2px] md:text-8xl ${info.accent}`}
-        />
-        <p className="mx-auto mt-6 max-w-2xl font-body text-base font-light text-white/85">
+        </p>
+        <h1
+          className="mt-2 font-display uppercase leading-[0.9] text-white"
+          style={{ fontSize: "clamp(44px, 9vw, 110px)", letterSpacing: "-0.01em" }}
+        >
+          {info.title}
+        </h1>
+        <p className="mx-auto mt-4 max-w-2xl font-body text-base font-medium text-white/90">
           {info.blurb}
         </p>
       </section>
 
       {/* products */}
-      <section className="relative z-10 mx-auto mt-16 grid max-w-5xl gap-5 px-6 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="relative z-10 mx-auto mt-14 grid max-w-5xl gap-6 px-6 sm:grid-cols-2 lg:grid-cols-3">
         {info.products.map((p, i) => (
           <motion.article
             key={p.name}
-            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-            className="flex min-h-[180px] flex-col rounded-[1.25rem] liquid-glass p-6"
+            transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
+            className="toon-card flex min-h-[190px] flex-col rounded-[1.5rem] p-6"
+            style={{ backgroundColor: info.panel }}
           >
             {p.tag && (
-              <span className={`mb-3 self-start rounded-full liquid-glass px-3 py-1 font-body text-[11px] ${info.accent}`}>
+              <span className="mb-3 self-start rounded-full bg-toon-ink px-3 py-1 font-body text-[11px] font-bold uppercase tracking-wide text-white">
                 {p.tag}
               </span>
             )}
-            <h3 className="font-heading italic text-2xl tracking-[-0.5px] text-white md:text-3xl">
+            <h3 className="font-round text-2xl font-extrabold leading-tight text-white">
               {p.name}
             </h3>
-            <p className="mt-2 font-body text-sm font-light leading-snug text-white/80">
+            <p className="mt-2 font-body text-sm font-medium leading-snug text-white/90">
               {p.desc}
             </p>
             <div className="mt-auto flex items-center justify-between pt-5">
-              <span className={`font-heading italic text-2xl ${info.accent}`}>
-                {p.price}
-              </span>
+              <span className="font-display text-3xl text-white">{p.price}</span>
               <a
                 href="tel:03114444237"
-                className="inline-flex items-center gap-1.5 rounded-full liquid-glass-strong px-4 py-2 font-body text-xs font-medium text-white"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 font-body text-xs font-bold uppercase tracking-wide text-toon-ink shadow-toon-sm transition-transform duration-150 hover:scale-105"
               >
-                Order <ArrowUpRight className="h-3.5 w-3.5" />
+                Order <ArrowRight className="h-3.5 w-3.5" />
               </a>
             </div>
           </motion.article>
@@ -89,18 +102,19 @@ export default function MenuPage() {
 
       {/* switch category */}
       <section className="relative z-10 mx-auto mt-20 max-w-5xl px-6 text-center">
-        <p className="font-body text-xs uppercase tracking-[0.3em] text-white/50">
+        <p className="font-body text-xs font-bold uppercase tracking-[0.3em] text-white/80">
           Explore the other menus
         </p>
-        <div className="mt-5 flex flex-wrap justify-center gap-3">
+        <div className="mt-5 flex flex-wrap justify-center gap-4">
           {CATEGORY_ORDER.filter((s) => s !== slug).map((s) => (
             <Link
               key={s}
               to={`/menu/${s}`}
-              className="inline-flex items-center gap-2 rounded-full liquid-glass px-5 py-3 font-body text-sm text-white"
+              className="toon-card inline-flex items-center gap-2 rounded-full px-6 py-3 font-round text-base font-bold text-white transition-transform duration-150 hover:scale-105"
+              style={{ backgroundColor: CATEGORIES[s].color }}
             >
               {CATEGORIES[s].title}
-              <ArrowUpRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" />
             </Link>
           ))}
         </div>

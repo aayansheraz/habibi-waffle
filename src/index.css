@@ -10,7 +10,7 @@ html,
 body {
   background: #0c0710;
   color: #fff;
-  font-family: "Barlow", sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
 }
@@ -19,85 +19,46 @@ body {
   box-sizing: border-box;
 }
 
-/* ---------- Liquid glass ---------- */
+/* ---------- Cartoon helpers ---------- */
+.cartoon-border {
+  border: 3px solid #2a1726;
+}
+.cartoon-border-white {
+  border: 3px solid rgba(255, 255, 255, 0.95);
+}
+
+/* hard offset shadow (sticker look) */
+.toon-card {
+  border: 3px solid rgba(255, 255, 255, 0.92);
+  box-shadow: 6px 6px 0 0 rgba(42, 23, 38, 0.45);
+}
+
+/* film grain overlay */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+}
+
+/* outlined display text */
+.text-stroke-ink {
+  -webkit-text-stroke: 2px #2a1726;
+}
+
+/* keep the old liquid glass around (still used by nav) */
 .liquid-glass {
   position: relative;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.01);
-  background-blend-mode: luminosity;
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18);
 }
 
-.liquid-glass::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.4px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 255, 255, 0.15) 20%,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, 0) 60%,
-    rgba(255, 255, 255, 0.15) 80%,
-    rgba(255, 255, 255, 0.45) 100%
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-.liquid-glass-strong {
-  position: relative;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
-  background-blend-mode: luminosity;
-  -webkit-backdrop-filter: blur(50px);
-  backdrop-filter: blur(50px);
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.05),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15);
-}
-
-.liquid-glass-strong::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.4px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(255, 255, 255, 0.2) 20%,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, 0) 60%,
-    rgba(255, 255, 255, 0.2) 80%,
-    rgba(255, 255, 255, 0.5) 100%
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-/* Hide scrollbar but keep scrolling */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 .no-scrollbar {
   -ms-overflow-style: none;
-  scrollbar-thickness: none;
   scrollbar-width: none;
-}
-
-/* Waffle grid texture used as section accents */
-.waffle-texture {
-  background-image: linear-gradient(rgba(245, 166, 35, 0.18) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(245, 166, 35, 0.18) 2px, transparent 2px);
-  background-size: 34px 34px;
 }

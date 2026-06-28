@@ -14,6 +14,13 @@ export const ArrowLeft = (p: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+export const ArrowRight = (p: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...p}>
+    <path d="M5 12h14" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 export const ChevronDown = (p: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...p}>
     <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />

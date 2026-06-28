@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import ScrollVideoStory from "../components/ScrollVideoStory";
-import StripedPoster from "../components/StripedPoster";
+import FoodCarousel from "../components/FoodCarousel";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
         <ScrollVideoStory />
       </div>
       <div id="menus">
-        <StripedPoster />
+        <FoodCarousel />
       </div>
       <Footer />
     </main>
