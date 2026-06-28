@@ -15,8 +15,8 @@ import { ChevronDown } from "./icons";
  *   TRACK height  -> how much scrolling plays the whole clip (smaller = faster)
  *   LERP          -> how tightly the playhead follows scroll (higher = snappier)
  */
-const TRACK = "h-[220vh]";
-const LERP = 0.2;
+const TRACK = "h-[150vh]";
+const LERP = 0.28;
 
 export default function ScrollVideoStory() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -59,7 +59,7 @@ export default function ScrollVideoStory() {
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden bg-black">
         <video
           ref={videoRef}
-          src="/videos/habibi-scroll.mp4"
+          src="/videos/hero.mp4"
           muted
           playsInline
           preload="auto"
