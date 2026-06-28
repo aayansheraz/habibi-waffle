@@ -62,7 +62,7 @@ export default function MenuPage() {
       <section className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 pt-6 text-center">
         <FoodModel
           slug={info.slug}
-          className="h-[40vh] w-[40vh] max-w-[86vw]"
+          className="h-[32vh] w-[32vh] max-w-[78vw] sm:h-[40vh] sm:w-[40vh] sm:max-w-[86vw]"
         />
         <p className="mt-4 font-body text-xs font-bold uppercase tracking-[0.3em] text-white/85">
           {info.kicker}

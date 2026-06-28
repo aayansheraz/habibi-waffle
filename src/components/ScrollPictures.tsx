@@ -68,11 +68,11 @@ function Panel({ pic, active }: { pic: Picture; active: boolean }) {
       </span>
 
       {/* 3D model (live only when this panel is the active one) */}
-      <div className="relative z-[3] mb-[12vh] sm:mb-[7vh]">
+      <div className="relative z-[3] mb-[16vh] sm:mb-[7vh]">
         <FoodModel
           slug={pic.slug}
           active={active}
-          className="h-[58vh] w-[58vh] max-w-[94vw]"
+          className="h-[40vh] w-[40vh] max-w-[78vw] sm:h-[58vh] sm:w-[58vh] sm:max-w-[94vw]"
         />
       </div>
 

@@ -50,7 +50,7 @@ export default function FoodModel({
   const show = near && active;
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={`model-3d ${className}`}>
       {show ? (
         <Suspense fallback={<FoodArt category={slug} className="h-full w-auto" />}>
           <ModelCanvas url={URLS[slug]} elevation={ELEVATION[slug]} />

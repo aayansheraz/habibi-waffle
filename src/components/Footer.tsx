@@ -1,5 +1,18 @@
-import { MapPin, Phone, Star } from "./icons";
+import {
+  Facebook,
+  Instagram,
+  MapPin,
+  Phone,
+  Star,
+  Whatsapp,
+} from "./icons";
 import Grain from "./Grain";
+
+const SOCIALS = [
+  { label: "Instagram", href: "https://instagram.com/habibiwafflepk", Icon: Instagram },
+  { label: "Facebook", href: "https://facebook.com/Habibiwaffle", Icon: Facebook },
+  { label: "WhatsApp", href: "https://wa.me/923114444237", Icon: Whatsapp },
+];
 
 export default function Footer() {
   return (
@@ -48,6 +61,27 @@ export default function Footer() {
               <br />
               234 reviews &middot; Open till 9pm
             </p>
+          </div>
+        </div>
+
+        {/* social media */}
+        <div className="flex flex-col items-center gap-3">
+          <p className="font-body text-xs font-bold uppercase tracking-[0.3em] text-white/60">
+            Follow us
+          </p>
+          <div className="flex items-center gap-4">
+            {SOCIALS.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="grid h-12 w-12 place-items-center rounded-full bg-white/10 text-white transition-all duration-150 hover:scale-110 hover:bg-toon-pink"
+              >
+                <Icon className="h-6 w-6" />
+              </a>
+            ))}
           </div>
         </div>
 
