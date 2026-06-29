@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import {
   Facebook,
   Instagram,
@@ -7,6 +8,7 @@ import {
   Whatsapp,
 } from "./icons";
 import Grain from "./Grain";
+import { pop } from "../anim";
 
 const SOCIALS = [
   { label: "Instagram", href: "https://instagram.com/habibiwafflepk", Icon: Instagram },
@@ -23,28 +25,36 @@ export default function Footer() {
     >
       <Grain opacity={0.25} />
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
-        <img
+        <motion.img
+          {...pop()}
           src="/images/logo-habibi-light.webp"
           alt="Häbibi"
           className="h-16 w-auto sm:h-20"
           draggable={false}
         />
 
-        <h2
+        <motion.h2
+          {...pop(0.06)}
           className="font-display uppercase leading-[0.9] text-white"
           style={{ fontSize: "clamp(40px, 8vw, 88px)" }}
         >
           Come say Habibi
-        </h2>
+        </motion.h2>
 
         <div className="grid w-full gap-5 sm:grid-cols-3">
-          <div className="toon-card flex flex-col items-center gap-2 rounded-[1.25rem] bg-toon-pink p-6">
+          <motion.div
+            {...pop(0)}
+            className="toon-card flex flex-col items-center gap-2 rounded-[1.25rem] bg-toon-pink p-6"
+          >
             <MapPin className="h-7 w-7 text-white" />
             <p className="font-body text-sm font-medium text-white">
               Shop No 1, Block A, Pak-Arab Housing Scheme, Lahore 54000
             </p>
-          </div>
-          <div className="toon-card flex flex-col items-center gap-2 rounded-[1.25rem] bg-toon-red p-6">
+          </motion.div>
+          <motion.div
+            {...pop(0.1)}
+            className="toon-card flex flex-col items-center gap-2 rounded-[1.25rem] bg-toon-red p-6"
+          >
             <Phone className="h-7 w-7 text-white" />
             <p className="font-body text-sm font-medium text-white">
               Home delivery
@@ -53,26 +63,30 @@ export default function Footer() {
                 0311 4444237
               </a>
             </p>
-          </div>
-          <div className="toon-card flex flex-col items-center gap-2 rounded-[1.25rem] bg-toon-amber p-6">
+          </motion.div>
+          <motion.div
+            {...pop(0.2)}
+            className="toon-card flex flex-col items-center gap-2 rounded-[1.25rem] bg-toon-amber p-6"
+          >
             <Star className="h-7 w-7 text-white" />
             <p className="font-body text-sm font-medium text-white">
               3.9 &#9733; on Google
               <br />
               234 reviews &middot; Open till 9pm
             </p>
-          </div>
+          </motion.div>
         </div>
 
         {/* social media */}
-        <div className="flex flex-col items-center gap-3">
+        <motion.div {...pop(0.1)} className="flex flex-col items-center gap-3">
           <p className="font-body text-xs font-bold uppercase tracking-[0.3em] text-white/60">
             Follow us
           </p>
           <div className="flex items-center gap-4">
-            {SOCIALS.map(({ label, href, Icon }) => (
-              <a
+            {SOCIALS.map(({ label, href, Icon }, i) => (
+              <motion.a
                 key={label}
+                {...pop(0.15 + i * 0.08)}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -80,10 +94,10 @@ export default function Footer() {
                 className="grid h-12 w-12 place-items-center rounded-full bg-white/10 text-white transition-all duration-150 hover:scale-110 hover:bg-toon-pink"
               >
                 <Icon className="h-6 w-6" />
-              </a>
+              </motion.a>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         <p className="font-body text-xs font-semibold uppercase tracking-[0.3em] text-white/45">
           &copy; {new Date().getFullYear()} Habibi Waffle &middot; Lahore

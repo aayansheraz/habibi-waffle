@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import { CATEGORY_ORDER, CATEGORIES, type Category } from "../data/menu";
 import Grain from "./Grain";
 import { ArrowRight } from "./icons";
+import { pop } from "../anim";
 
 /** Poster colours + real brand logos per category. */
 const STRIPE: Record<
@@ -95,15 +97,19 @@ export default function StripedPoster() {
   return (
     <section className="relative bg-black">
       <div className="px-6 pb-10 pt-16 text-center">
-        <h2
+        <motion.h2
+          {...pop()}
           className="font-display uppercase leading-[0.9] text-white"
           style={{ fontSize: "clamp(40px, 8vw, 92px)" }}
         >
           Pick Your Craving
-        </h2>
-        <p className="mt-3 font-body text-xs font-bold uppercase tracking-[0.3em] text-white/60">
+        </motion.h2>
+        <motion.p
+          {...pop(0.08)}
+          className="mt-3 font-body text-xs font-bold uppercase tracking-[0.3em] text-white/60"
+        >
           Hover a stripe &middot; tap to open its menu
-        </p>
+        </motion.p>
       </div>
 
       <div className="flex flex-col md:flex-row">

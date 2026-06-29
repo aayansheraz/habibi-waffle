@@ -5,6 +5,7 @@ import { CATEGORIES, CATEGORY_ORDER, type Category } from "../data/menu";
 import FoodModel from "../components/FoodModel";
 import Grain from "../components/Grain";
 import { ArrowLeft, ArrowRight, Phone } from "../components/icons";
+import { pop } from "../anim";
 
 const LOGO: Record<Category, { src: string; cls: string }> = {
   waffle: { src: "/images/logo-waffle.webp", cls: "h-10 w-10" },
@@ -64,18 +65,25 @@ export default function MenuPage() {
           slug={info.slug}
           className="h-[32vh] w-[32vh] max-w-[78vw] sm:h-[40vh] sm:w-[40vh] sm:max-w-[86vw]"
         />
-        <p className="mt-4 font-body text-xs font-bold uppercase tracking-[0.3em] text-white/85">
+        <motion.p
+          {...pop()}
+          className="mt-4 font-body text-xs font-bold uppercase tracking-[0.3em] text-white/85"
+        >
           {info.kicker}
-        </p>
-        <h1
+        </motion.p>
+        <motion.h1
+          {...pop(0.05)}
           className="mt-2 font-display uppercase leading-[0.9] text-white"
           style={{ fontSize: "clamp(44px, 9vw, 110px)", letterSpacing: "-0.01em" }}
         >
           {info.title}
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl font-body text-base font-medium text-white/90">
+        </motion.h1>
+        <motion.p
+          {...pop(0.12)}
+          className="mx-auto mt-4 max-w-2xl font-body text-base font-medium text-white/90"
+        >
           {info.blurb}
-        </p>
+        </motion.p>
       </section>
 
       {/* products */}
@@ -83,10 +91,7 @@ export default function MenuPage() {
         {info.products.map((p, i) => (
           <motion.article
             key={p.name}
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
+            {...pop((i % 3) * 0.08)}
             className="toon-card flex min-h-[190px] flex-col rounded-[1.5rem] p-6"
             style={{ backgroundColor: info.panel }}
           >
@@ -116,20 +121,24 @@ export default function MenuPage() {
 
       {/* switch category */}
       <section className="relative z-10 mx-auto mt-20 max-w-5xl px-6 text-center">
-        <p className="font-body text-xs font-bold uppercase tracking-[0.3em] text-white/80">
+        <motion.p
+          {...pop()}
+          className="font-body text-xs font-bold uppercase tracking-[0.3em] text-white/80"
+        >
           Explore the other menus
-        </p>
+        </motion.p>
         <div className="mt-5 flex flex-wrap justify-center gap-4">
-          {CATEGORY_ORDER.filter((s) => s !== slug).map((s) => (
-            <Link
-              key={s}
-              to={`/menu/${s}`}
-              className="toon-card inline-flex items-center gap-2 rounded-full px-6 py-3 font-round text-base font-bold text-white transition-transform duration-150 hover:scale-105"
-              style={{ backgroundColor: CATEGORIES[s].color }}
-            >
-              {CATEGORIES[s].title}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+          {CATEGORY_ORDER.filter((s) => s !== slug).map((s, i) => (
+            <motion.div key={s} {...pop(i * 0.1)}>
+              <Link
+                to={`/menu/${s}`}
+                className="toon-card inline-flex items-center gap-2 rounded-full px-6 py-3 font-round text-base font-bold text-white transition-transform duration-150 hover:scale-105"
+                style={{ backgroundColor: CATEGORIES[s].color }}
+              >
+                {CATEGORIES[s].title}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
           ))}
         </div>
       </section>
