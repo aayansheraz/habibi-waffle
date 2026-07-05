@@ -8,9 +8,9 @@ import { ArrowLeft, ArrowRight, Phone } from "../components/icons";
 import { pop } from "../anim";
 
 const LOGO: Record<Category, { src: string; cls: string }> = {
-  waffle: { src: "/images/logo-waffle.webp", cls: "h-10 w-10" },
-  chinese: { src: "/images/logo-habibi-light.webp", cls: "h-7 w-auto" },
-  fastfood: { src: "/images/logo-h.webp", cls: "h-10 w-10" },
+  waffle: { src: import.meta.env.BASE_URL + "images/logo-waffle.webp", cls: "h-10 w-10" },
+  chinese: { src: import.meta.env.BASE_URL + "images/logo-habibi-light.webp", cls: "h-7 w-auto" },
+  fastfood: { src: import.meta.env.BASE_URL + "images/logo-h.webp", cls: "h-10 w-10" },
 };
 
 export default function MenuPage() {

@@ -27,7 +27,7 @@ export default function Footer() {
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
         <motion.img
           {...pop()}
-          src="/images/logo-habibi-light.webp"
+          src={import.meta.env.BASE_URL + "images/logo-habibi-light.webp"}
           alt="Häbibi"
           className="h-16 w-auto sm:h-20"
           draggable={false}

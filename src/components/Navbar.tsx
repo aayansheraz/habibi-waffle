@@ -31,13 +31,13 @@ export default function Navbar() {
         {/* brand */}
         <a href="#hero" className="flex items-center gap-2.5">
           <img
-            src="/images/logo-waffle.webp"
+            src={import.meta.env.BASE_URL + "images/logo-waffle.webp"}
             alt="Habibi Waffle"
             className="h-10 w-10"
             draggable={false}
           />
           <img
-            src="/images/logo-habibi-light.webp"
+            src={import.meta.env.BASE_URL + "images/logo-habibi-light.webp"}
             alt="Häbibi"
             className="h-5 w-auto sm:h-6"
             draggable={false}
