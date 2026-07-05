@@ -3,3 +3,5 @@ dist
 .DS_Store
 *.local
 .vite
+
+# AI tool local state (not project code, don't commit)
