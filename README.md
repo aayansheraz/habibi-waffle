@@ -40,26 +40,31 @@ Open the URL Vite prints (usually http://localhost:5173).
 
 ```
 src/
-├── App.tsx                 # routes
+├── App.tsx                  # routes + idle 3D preloading
 ├── pages/
-│   ├── Home.tsx            # intro + story + poster + footer
-│   └── MenuPage.tsx        # per-category product page
+│   ├── Home.tsx             # intro + story + poster + footer
+│   └── MenuPage.tsx         # per-category product page
 ├── components/
-│   ├── ScrollStory.tsx     # scroll-driven logo intro + story chapters
-│   ├── StripedPoster.tsx   # three clickable food stripes
-│   ├── HabibiLogo.tsx      # SVG recreation of the circular logo
-│   ├── BlurText.tsx        # word-by-word blur-in animation
-│   ├── Navbar.tsx / Footer.tsx
-│   └── icons.tsx
-└── data/menu.ts            # categories + products (edit prices/items here)
+│   ├── ScrollLogoHero.tsx   # scroll-driven logo intro
+│   ├── ScrollPictures.tsx   # scroll story chapters
+│   ├── StripedPoster.tsx    # three clickable food stripes
+│   ├── ModelCanvas.tsx      # lazy Three.js canvas + preloader
+│   ├── FoodModel.tsx        # single 3D model
+│   ├── FoodArt.tsx          # SVG fallbacks
+│   ├── BlurText.tsx         # word-by-word blur-in animation
+│   └── Navbar.tsx / Footer.tsx / Grain.tsx / icons.tsx
+└── data/menu.ts             # categories + products (edit prices/items here)
 ```
 
 ## Customising
 
 - **Products & prices:** edit `src/data/menu.ts`.
-- **Brand colours:** `tailwind.config.js` under `theme.extend.colors.habibi`.
-- **Real photos:** drop images into `public/images/` and reference them as
-  `/images/your-file.jpg` in the components.
+- **Brand colours:** `tailwind.config.js` under `theme.extend.colors`.
+- **Photos & logos:** drop images into `public/images/` and reference them as `/images/your-file.webp`.
 
-> Note: the logo is currently an SVG recreation. Swap in the real logo/photos
-> when you have them.
+## Deployment
+
+- **Vercel** (root domain) — config in `vercel.json`; builds with base `/`.
+- **GitHub Pages** (`/habibi-waffle/`) — `.github/workflows/deploy.yml` builds with `GITHUB_PAGES=true`.
+
+The Vite `base` switches automatically between the two, so both stay in sync.

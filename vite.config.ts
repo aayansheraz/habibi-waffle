@@ -2,7 +2,9 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/habibi-waffle/",
+  // GitHub Pages serves under a subpath (/habibi-waffle/); Vercel and local
+  // preview serve at the root. The workflow sets GITHUB_PAGES for its build.
+  base: process.env.GITHUB_PAGES ? "/habibi-waffle/" : "/",
   plugins: [react()],
   assetsInclude: ["**/*.glb"],
   build: {
