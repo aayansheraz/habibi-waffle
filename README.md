@@ -1,70 +1,72 @@
-# Habibi Waffle
+# Habibi Waffle — Scroll-Driven Restaurant Experience
 
-**[Live demo →](https://aayansheraz.github.io/habibi-waffle/)**
+[![CI Build](https://github.com/aayansheraz/habibi-waffle/actions/workflows/ci.yml/badge.svg)](https://github.com/aayansheraz/habibi-waffle/actions/workflows/ci.yml)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Interactive_Site-00C853?style=flat&logo=vercel)](https://aayansheraz.github.io/habibi-waffle/)
+[![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat&logo=framer)](https://framer.com/motion)
 
-![Habibi Waffle screenshot](.github/screenshot.png)
+**[🚀 View Live Storytelling Website →](https://aayansheraz.github.io/habibi-waffle/)**
 
-A scroll-driven story website for **Habibi Waffle**, Lahore — famous for waffles
-& ice cream, and also serving Chinese and fast food.
+![Habibi Waffle Screenshot](.github/screenshot.png)
 
-Built with **React + Vite + TypeScript + Tailwind CSS + Framer Motion**, with
-**React Router** for the per-category menu pages.
+A scroll-driven culinary storytelling web application built for **Habibi Waffle**, Lahore. The site takes users through a multi-chapter scroll experience showcasing waffles, ice cream, Chinese items, and fast food, seamlessly routing into dedicated category menu views.
 
-## Concept
+Built with **React + TypeScript + Vite + Tailwind CSS + Framer Motion + React Router**.
 
-1. **Logo intro** — the Habibi Waffle badge fills the screen.
-2. **Scroll story** — scrolling drives a chapter-by-chapter story of what we
-   serve: waffles & ice cream → Chinese → broast / pizza / wraps.
-3. **Three-stripe poster** — the striped page with a button per food type.
-4. Each stripe routes to its own **menu page** (`/menu/waffle`,
-   `/menu/chinese`, `/menu/fastfood`) listing the products.
+---
 
-## Getting started
+## 🌟 Interactive Experience & Features
 
-```bash
-npm install      # first time only
-npm run dev      # start dev server (hot reload)
-```
+1. **Scroll-Driven Chapter Narrative:** Sequential scroll triggers driving category reveals from desserts to fast food.
+2. **Three-Stripe Category Router:** Interactive category portal routing users to dynamic menu pages (`/menu/waffle`, `/menu/chinese`, `/menu/fastfood`).
+3. **Lazy 3D & SVG Fallbacks:** Optimized Three.js 3D asset canvas loader with SVG fallback support.
+4. **Dynamic Menu Schema:** Centralized menu configuration in `src/data/menu.ts` supporting rapid item updates and pricing adjustments.
 
-Open the URL Vite prints (usually http://localhost:5173).
+---
 
-## Scripts
-
-| Command           | What it does                         |
-| ----------------- | ------------------------------------ |
-| `npm run dev`     | Start the local dev server           |
-| `npm run build`   | Type-check + production build         |
-| `npm run preview` | Preview the production build locally |
-
-## Structure
+## 🛠️ Architecture
 
 ```
 src/
-├── App.tsx                  # routes + idle 3D preloading
+├── App.tsx                  # React Router setup & global providers
 ├── pages/
-│   ├── Home.tsx             # intro + story + poster + footer
-│   └── MenuPage.tsx         # per-category product page
+│   ├── Home.tsx             # Intro, scroll story chapters, poster & footer
+│   └── MenuPage.tsx         # Category-specific menu catalog
 ├── components/
-│   ├── ScrollLogoHero.tsx   # scroll-driven logo intro
-│   ├── ScrollPictures.tsx   # scroll story chapters
-│   ├── StripedPoster.tsx    # three clickable food stripes
-│   ├── ModelCanvas.tsx      # lazy Three.js canvas + preloader
-│   ├── FoodModel.tsx        # single 3D model
-│   ├── FoodArt.tsx          # SVG fallbacks
-│   ├── BlurText.tsx         # word-by-word blur-in animation
-│   └── Navbar.tsx / Footer.tsx / Grain.tsx / icons.tsx
-└── data/menu.ts             # categories + products (edit prices/items here)
+│   ├── ScrollLogoHero.tsx   # Hero scroll animation container
+│   ├── ScrollPictures.tsx   # Scroll story chapter cards
+│   ├── StripedPoster.tsx    # Category selection poster
+│   ├── ModelCanvas.tsx      # Three.js WebGL canvas loader
+│   ├── FoodModel.tsx        # 3D food object renderer
+│   ├── FoodArt.tsx          # SVG visual fallbacks
+│   └── BlurText.tsx         # Typography animation utilities
+└── data/
+    └── menu.ts              # Menu product data & pricing dictionary
 ```
 
-## Customising
+---
 
-- **Products & prices:** edit `src/data/menu.ts`.
-- **Brand colours:** `tailwind.config.js` under `theme.extend.colors`.
-- **Photos & logos:** drop images into `public/images/` and reference them as `/images/your-file.webp`.
+## 💻 Local Development Setup
 
-## Deployment
+```bash
+# Install dependencies
+npm install
 
-- **Vercel** (root domain) — config in `vercel.json`; builds with base `/`.
-- **GitHub Pages** (`/habibi-waffle/`) — `.github/workflows/deploy.yml` builds with `GITHUB_PAGES=true`.
+# Run local development server
+npm run dev
+```
 
-The Vite `base` switches automatically between the two, so both stay in sync.
+---
+
+## 📦 Production Build
+
+```bash
+npm run build
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
